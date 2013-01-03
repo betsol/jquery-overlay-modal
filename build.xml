@@ -1,0 +1,157 @@
+<project name="OverlayWindow" default="dist" basedir=".">
+
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="/usr/share/java/ant-contrib.jar" />
+        </classpath>
+    </taskdef>
+
+    <property name="src"  location="src"  />
+    <property name="dist" location="dist" />
+    <property name="demo" location="demo" />
+
+    <property name="version" value="1.1b" />
+
+    <property name="less_executable" location="/usr/bin/lessc" />
+    <property name="yui_executable"  location="/usr/bin/yui-compressor" />
+
+    <target name="clean">
+        <delete dir="${dist}" />
+        <delete dir="${demo}" />
+    </target>
+
+    <target name="init" depends="clean">
+        <mkdir dir="${dist}" />
+        <mkdir dir="${demo}" />
+
+        <copy todir="${dist}">
+            <fileset dir="${src}/library">
+                <!-- Skipping all less files -->
+                <exclude name="**/less/**" />
+            </fileset>
+        </copy>
+
+        <copy todir="${demo}">
+            <fileset dir="${src}/demo">
+                <!-- Skipping all less files -->
+                <exclude name="**/less/**" />
+            </fileset>
+        </copy>
+
+        <mkdir dir="${dist}/css" />
+        <mkdir dir="${demo}/css" />
+    </target>
+
+    <target name="dist" depends="init">
+
+        <foreach target="process-less" param="filename">
+            <path>
+                <fileset dir="${src}" casesensitive="yes">
+                    <include name="**/*.less" />
+                </fileset>
+            </path>
+        </foreach>
+
+        <foreach target="process-javascript" param="filename">
+            <path>
+                <fileset dir="${src}" casesensitive="yes">
+                    <include name="**/*.js" />
+                </fileset>
+            </path>
+        </foreach>
+
+    </target>
+
+    <target name="process-less">
+        <propertyregex
+            property="output_path"
+            input="${filename}"
+            regexp="(.*)\.less$"
+            replace="\1.css"
+            casesensitive="true"
+        />
+
+        <propertyregex
+            property="output_path"
+            override="true"
+            input="${output_path}"
+            regexp="(.*)/less/(.*)"
+            replace="\1/css/\2"
+            casesensitive="true"
+        />
+
+        <propertyregex
+            property="output_path"
+            override="true"
+            input="${output_path}"
+            regexp="(.*)/src/library/(.*)"
+            replace="\1/dist/\2"
+            casesensitive="true"
+        />
+
+        <propertyregex
+            property="output_path"
+            override="true"
+            input="${output_path}"
+            regexp="(.*)/src/demo/(.*)"
+            replace="\1/demo/\2"
+            casesensitive="true"
+        />
+
+        <antcall target="less-compile">
+            <param name="input_path"  value="${filename}" />
+            <param name="output_path" value="${output_path}" />
+        </antcall>
+
+        <antcall target="yui-minify">
+            <param name="input_path"  value="${output_path}" />
+            <param name="output_path" value="${output_path}" />
+        </antcall>
+    </target>
+
+    <target name="process-javascript">
+        <propertyregex
+            property="output_path"
+            input="${filename}"
+            regexp="(.*)\.js$"
+            replace="\1-min.js"
+            casesensitive="true"
+        />
+
+        <propertyregex
+            property="output_path"
+            override="true"
+            input="${output_path}"
+            regexp="(.*)/src/library/(.*)"
+            replace="\1/dist/\2"
+            casesensitive="true"
+        />
+
+        <propertyregex
+            property="output_path"
+            override="true"
+            input="${output_path}"
+            regexp="(.*)/src/demo/(.*)"
+            replace="\1/demo/\2"
+            casesensitive="true"
+        />
+
+        <antcall target="yui-minify">
+            <param name="input_path"  value="${filename}" />
+            <param name="output_path" value="${output_path}" />
+        </antcall>
+    </target>
+
+    <target name="less-compile">
+        <exec executable="${less_executable}" output="${output_path}">
+            <arg line="${input_path}" />
+        </exec>
+    </target>
+
+    <target name="yui-minify">
+        <exec executable="java" output="${output_path}">
+            <arg line="-jar ./tools/yuicompressor-2.4.7.jar ${input_path}" />
+        </exec>
+    </target>
+
+</project>

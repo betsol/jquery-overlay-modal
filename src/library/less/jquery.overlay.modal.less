@@ -1,0 +1,106 @@
+/* Overlay Modal Plugin Styles */
+
+@overlay-modal-screen-red:          0;
+@overlay-modal-screen-green:        0;
+@overlay-modal-screen-blue:         0;
+@overlay-modal-screen-transparency: .6;
+@overlay-modal-cross-transparency:  .6;
+@overlay-modal-close-transparency:  .8;
+
+@overlay-modal-imageset-url : '../i/overlay-modal-imageset.png';
+@overlay-modal-pie-url      : 'css/PIE.htc';
+
+.overlay-modal-transparency(@alpha) {
+    @a: @alpha*100;
+    zoom: 1;
+    filter: alpha(opacity=@a);
+    opacity: @alpha;
+}
+
+.overlay-modal-border-radius(@value) {
+    border-radius: @value;
+    -moz-border-radius: @value;
+    -webkit-border-radius: @value;
+}
+
+#overlay-modal-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+
+    text-align: center;
+    overflow: auto;
+
+    background: rgba(
+        @overlay-modal-screen-red,
+        @overlay-modal-screen-green,
+        @overlay-modal-screen-blue,
+        @overlay-modal-screen-transparency
+    );
+
+    behavior: url(@overlay-modal-pie-url);
+    -pie-background: rgba(
+        @overlay-modal-screen-red,
+        @overlay-modal-screen-green,
+        @overlay-modal-screen-blue,
+        @overlay-modal-screen-transparency
+    );
+}
+
+div.overlay-modal-window {
+    .overlay-modal-border-radius(16px);
+    position: relative;
+    display: inline-block;
+    background: #fff;
+    cursor: default;
+    text-align: left;
+
+    div.overlay-modal-window-header {
+        height: 46px;
+        border-bottom: 1px solid #AAA;
+
+        h1 {
+            padding: 0 0 0 16px;
+            font-size: 20px;
+            color: #333;
+            line-height: 46px;
+        }
+    }
+
+    div.overlay-modal-content-wrapper {
+        padding: 16px;
+    }
+
+    a.overlay-modal-close {
+        .overlay-modal-transparency(@overlay-modal-close-transparency);
+        display: block;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 14px;
+        height: 14px;
+        background-image: url(@overlay-modal-imageset-url);
+        background-repeat: no-repeat;
+        background-position: 0 -32px;
+    }
+}
+
+.overlay-modal-html {
+   	overflow: hidden;
+}
+
+#overlay-modal-cross {
+    .overlay-modal-transparency(@overlay-modal-cross-transparency);
+    position: fixed;
+    right: 40px;
+    top: 25px;
+    width: 32px;
+    height: 32px;
+    background-image: url(@overlay-modal-imageset-url);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}

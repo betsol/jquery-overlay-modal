@@ -1,0 +1,14 @@
+{
+    "name": "betsol/jquery-overlay-modal",
+    "type": "betsol-felib",
+    "description": "jQuery plugin for modal overlay windows",
+    "authors": [
+        {
+            "name": "Slava Fomin II",
+            "email": "s.fomin@betsol.ru"
+        }
+    ],
+    "require": {
+        "betsol/composer": "*"
+    }
+}

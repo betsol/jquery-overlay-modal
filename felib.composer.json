@@ -1,0 +1,9 @@
+{
+    "targets": {
+        "default": {
+            "actions": [
+                "deploy_files": "dist/*"
+            ]
+        }
+    }
+}
