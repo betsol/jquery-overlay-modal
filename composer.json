@@ -9,6 +9,12 @@
         }
     ],
     "require": {
-        "betsol/composer": "*"
-    }
+        "betsol/composer-felib": "*"
+    },
+    "repositories": [
+        {
+            "type" : "git",
+            "url"  : "https://github.com/betsol/composer-felib.git"
+        }
+    ]
 }
