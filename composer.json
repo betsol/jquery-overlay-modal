@@ -1,5 +1,6 @@
 {
     "name": "betsol/jquery-overlay-modal",
+    "type": "betsol-felib",
     "description": "jQuery plugin for modal overlay windows",
     "authors": [
         {
@@ -10,11 +11,5 @@
     "require": {
         "betsol/composer-felib": "master"
     },
-    "repositories" : [
-        {
-            "type" : "git",
-            "url"  : "https://github.com/betsol/composer-felib.git"
-        }
-    ],
     "minimum-stability": "dev"
 }
