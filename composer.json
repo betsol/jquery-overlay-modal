@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "betsol/composer-felib": "master"
+        "betsol/composer-felib": "dev-master"
     },
     "repositories": [
         {
