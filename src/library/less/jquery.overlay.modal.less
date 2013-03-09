@@ -58,6 +58,13 @@ div.overlay-modal-window {
     background: #fff;
     cursor: default;
     text-align: left;
+    
+    /* Shadow effect */
+    -moz-box-shadow: 0 0 30px 5px #222222;
+    -webkit-box-shadow: 0 0 30px 5px #222222;
+    box-shadow: 0 0 30px 5px #222222;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color='#222222')";
+    filter: progid:dximagetransform.microsoft.shadow(Strength=5px, Direction=135, Color='#222222');
 
     div.overlay-modal-window-header {
         height: 46px;
@@ -90,7 +97,7 @@ div.overlay-modal-window {
 }
 
 .overlay-modal-html {
-   	overflow: hidden;
+    overflow: hidden;
 }
 
 #overlay-modal-cross {

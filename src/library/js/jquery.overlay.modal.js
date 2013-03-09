@@ -547,6 +547,12 @@
 
     function triggerEvent(instance, event_name, event)
     {
+        if (typeof event != 'object' || !event) {
+            event = {};
+        }
+        
+        event.instance = instance;
+        
         if (instance.eventsManager) {
             return instance.eventsManager.triggerResult(event_name, event);
         }
