@@ -51,14 +51,20 @@
     );
 }
 
-div.overlay-modal-window {
-    .overlay-modal-border-radius(16px);
+.overlay-modal-window-minimal {
     position: relative;
     display: inline-block;
-    background: #fff;
     cursor: default;
     text-align: left;
-    
+}
+
+.overlay-modal-window {
+    .overlay-modal-window-minimal();
+
+    .overlay-modal-border-radius(16px);
+
+    background: #FFF;
+
     /* Shadow effect */
     -moz-box-shadow: 0 0 30px 5px #222222;
     -webkit-box-shadow: 0 0 30px 5px #222222;

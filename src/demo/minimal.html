@@ -32,7 +32,7 @@
         <p>Nulla id placerat odio. Morbi auctor, turpis eu euismod ultrices, nibh lorem convallis mauris, ac vestibulum dolor leo nec velit. Ut vitae nisl id nulla facilisis congue. Nunc tortor justo, tincidunt sit amet facilisis sed, ornare et leo. Donec id dui id erat egestas aliquet eu nec turpis. In feugiat faucibus condimentum. Maecenas luctus auctor ipsum, quis mattis eros pulvinar aliquet. Nam ut urna sed nisi porttitor egestas. Cras sollicitudin diam et enim pharetra suscipit a non nulla. Mauris et sapien at elit facilisis tempus. Proin vel metus vitae felis mollis pretium. Aenean pellentesque tincidunt auctor. Nam tristique, mi non consectetur dapibus, quam eros tincidunt felis, a rutrum ante libero ac est.</p>
         <p>Nulla lectus turpis, consectetur sit amet convallis et, lobortis eget nisl. Fusce pharetra posuere quam, non facilisis eros tristique tincidunt. Morbi dapibus auctor rutrum. Donec interdum quam et augue eleifend ut rutrum urna aliquam. Cras dapibus pulvinar leo vitae suscipit. Nullam aliquam semper felis a facilisis. In dui arcu, pulvinar quis vestibulum sit amet, tempus quis arcu. Nulla sed mi a tortor malesuada vehicula. Curabitur sit amet elementum est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi eget rhoncus lacus. Vivamus ligula purus, euismod eu dignissim id, dapibus at nisl.</p>
 
-        <p><a id="popup-trigger" href="javascript:void(0);">Show me blue!</a></p>
+        <p><a id="popup-trigger-1" href="javascript:void(0);">Show me blue!</a></p>
 
         <p>Nam eget risus at ante imperdiet mollis eu non enim. Morbi eros est, tristique a iaculis vel, sagittis eget velit. Nulla odio sem, tempor scelerisque luctus ac, cursus iaculis orci. Aenean nec massa lorem. Curabitur arcu est, accumsan in sagittis vel, dapibus porttitor augue. Morbi at magna ante. Praesent lacinia condimentum tortor vitae euismod. Morbi porta convallis ligula, non pharetra risus varius non. Etiam nulla nisi, blandit vel interdum vitae, tempor vitae eros. Donec eros odio, porta in pharetra non, mattis et sem. Nullam porta ipsum nec nibh vulputate consequat. Quisque nec odio tellus. Morbi id sem mollis magna condimentum volutpat. Sed luctus, nisi at pharetra interdum, justo nunc sollicitudin sapien, id facilisis massa dolor sed nunc.</p>
 
@@ -75,11 +75,13 @@
     </div>
 
     <div class="hidden">
-        <div id="popup-content" class="content content-blue">
+        <div id="popup-content-1" class="content content-blue" style="background: #EEE;">
 
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras semper, enim placerat condimentum lobortis, lorem orci vulputate magna, a lobortis odio nulla sed nisl. Curabitur tincidunt, lorem et vestibulum viverra, dolor lorem suscipit quam, sed ultrices ligula enim ut leo. Phasellus pretium urna sed ligula vulputate a venenatis lorem vestibulum. Proin eget lacus vitae est tincidunt mollis eu ac ligula. Suspendisse potenti. Curabitur sed vulputate enim. In hac habitasse platea dictumst. Integer nisi dolor, cursus vel aliquam eu, hendrerit vitae nulla. Praesent varius, dolor ut mattis consequat, nibh nisl commodo purus, et sollicitudin turpis nibh eget urna. Cras dapibus fermentum eros, id ornare purus venenatis non. Vestibulum ac nulla sapien, in hendrerit velit. Proin congue blandit mi id lacinia. Integer vitae nulla enim, non mollis lacus. Vivamus diam turpis, viverra mattis convallis eu, blandit eget sapien. In id libero lorem, nec feugiat enim. Nulla accumsan viverra arcu eget mattis.</p>
 
             <img src="i/apples.001.jpg" class="image-left" alt="" />
+            
+            <p><a href="#" id="om1-close">Close this window!</a></p>
 
             <p>Nulla id placerat odio. Morbi auctor, turpis eu euismod ultrices, nibh lorem convallis mauris, ac vestibulum dolor leo nec velit. Ut vitae nisl id nulla facilisis congue. Nunc tortor justo, tincidunt sit amet facilisis sed, ornare et leo. Donec id dui id erat egestas aliquet eu nec turpis. In feugiat faucibus condimentum. Maecenas luctus auctor ipsum, quis mattis eros pulvinar aliquet. Nam ut urna sed nisi porttitor egestas. Cras sollicitudin diam et enim pharetra suscipit a non nulla. Mauris et sapien at elit facilisis tempus. Proin vel metus vitae felis mollis pretium. Aenean pellentesque tincidunt auctor. Nam tristique, mi non consectetur dapibus, quam eros tincidunt felis, a rutrum ante libero ac est.</p>
             <p>Nulla lectus turpis, consectetur sit amet convallis et, lobortis eget nisl. Fusce pharetra posuere quam, non facilisis eros tristique tincidunt. Morbi dapibus auctor rutrum. Donec interdum quam et augue eleifend ut rutrum urna aliquam. Cras dapibus pulvinar leo vitae suscipit. Nullam aliquam semper felis a facilisis. In dui arcu, pulvinar quis vestibulum sit amet, tempus quis arcu. Nulla sed mi a tortor malesuada vehicula. Curabitur sit amet elementum est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi eget rhoncus lacus. Vivamus ligula purus, euismod eu dignissim id, dapibus at nisl.</p>
@@ -107,41 +109,26 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
-    <script type="text/javascript" src="js/jquery.events.manager.js"></script>
     <script type="text/javascript" src="../dist/js/jquery.overlay.modal.js"></script>
 
     <script type="text/javascript">
         $(function() {
-
-            $.overlayModal('setDebug', true);
-
-            var OM = $.overlayModal('newInstance', {
+            var OM1 = $.overlayModal('newInstance', {
                 source: {
                     type     : 'dom',
-                    selector : '#popup-content'
+                    selector : '#popup-content-1'
                 },
-                title : 'Bluey window',
-                eventHandlers: {
-                    open: function() {
-                        if (!confirm('Really open?')) {
-                            return false;
-                        }
-                    },
-                    opened: function() {
-                        alert('Opened');
-                    },
-                    close: function() {
-                        if (!confirm('Close?')) {
-                            return false;
-                        }
-                    },
-                    closed: function() {
-                        alert('Closed');
-                    }
+                use_header: false,
+                css_classes: {
+                    window: 'overlay-modal-window-minimal'
                 }
             });
-            $('#popup-trigger').click(function() {
-                OM.open();
+            $('#popup-trigger-1').click(function() {
+                OM1.open();
+                return false;
+            });
+            $('#om1-close').click(function() {
+                OM1.close();
                 return false;
             });
         });

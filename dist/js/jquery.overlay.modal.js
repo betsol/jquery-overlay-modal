@@ -34,20 +34,25 @@
         // Window's title.
         title: '',
 
+        use_header: true,
+
         eventHandlers: {
             open   : null,
             opened : null,
             close  : null,
             closed : null
+        },
+
+        css_classes: {
+            window          : 'overlay-modal-window',
+            content_wrapper : 'overlay-modal-content-wrapper',
+            close_button    : 'overlay-modal-close',
+            window_header   : 'overlay-modal-window-header'
         }
     };
 
     var css_classes = {
-        html            : 'overlay-modal-html',
-        window          : 'overlay-modal-window',
-        content_wrapper : 'overlay-modal-content-wrapper',
-        close_button    : 'overlay-modal-close',
-        window_header   : 'overlay-modal-window-header'
+        html : 'overlay-modal-html'
     };
 
     var texts = {
@@ -166,7 +171,7 @@
             }
 
             var $Window = $('<div />')
-                .addClass(css_classes.window)
+                .addClass(self.settings.css_classes.window)
 
                 // Preventing overlay closing when user hit the window area.
                 .click(function(event) {
@@ -180,35 +185,37 @@
                 })
             ;
 
-            // Header.
-            var $Header = $('<div />')
-                .addClass(css_classes.window_header)
-            ;
+            if (self.settings.use_headere) {
+                // Header.
+                var $Header = $('<div />')
+                        .addClass(self.settings.css_classes.window_header)
+                    ;
 
-            // Window close button.
-            if (self.settings.closable) {
-                $Header.append(
-                    $('<a href="#" />')
-                        .attr('class', css_classes.close_button)
-                        .attr('title', texts.close_title)
-                        .click(function() {
-                            closeActiveWindow();
-                            return false;
-                        })
-                );
+                // Window close button.
+                if (self.settings.closable) {
+                    $Header.append(
+                        $('<a href="#" />')
+                            .attr('class', self.settings.css_classes.close_button)
+                            .attr('title', texts.close_title)
+                            .click(function() {
+                                closeActiveWindow();
+                                return false;
+                            })
+                    );
+                }
+
+                // Window title.
+                if (self.settings.title) {
+                    $Header.append('<h1>' + self.settings.title + '</h1>');
+                }
+
+                // Appending header.
+                $Window.append($Header);
             }
-
-            // Window title.
-            if (self.settings.title) {
-                $Header.append('<h1>' + self.settings.title + '</h1>');
-            }
-
-            // Appending header.
-            $Window.append($Header);
 
             // Content wrapper.
             var $ContentWrapper = $('<div />')
-                .attr('class', css_classes.content_wrapper)
+                .attr('class', self.settings.css_classes.content_wrapper)
             ;
 
             // Appending fetched content to the window.
@@ -465,11 +472,13 @@
 
         $Container.scrollTop(0);
 
-        // Setting header's width equal to window's width.
-        // This is required for IE7.
-        instance.window.find('.' + css_classes.window_header).width(
-            instance.window.width()
-        );
+        if (instance.settings.use_header) {
+            // Setting header's width equal to window's width.
+            // This is required for IE7.
+            instance.window.find('.' + instance.settings.css_classes.window_header).width(
+                instance.window.width()
+            );
+        }
 
         // Firing event.
         triggerEvent(instance, 'opened');
