@@ -185,7 +185,7 @@
                 })
             ;
 
-            if (self.settings.use_headere) {
+            if (self.settings.use_header) {
                 // Header.
                 var $Header = $('<div />')
                         .addClass(self.settings.css_classes.window_header)
